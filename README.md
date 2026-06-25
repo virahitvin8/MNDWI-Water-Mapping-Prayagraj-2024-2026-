@@ -293,6 +293,8 @@ MNDWI-Water-Mapping-Prayagraj-2024-2026/
 
 <p align="center">
   <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00bcd4,50:1e88e5,100:0a3d62&height=120&section=footer&animation=fadeIn" alt="footer"/>
+  <br>
+  📫 <strong>Get in touch:</strong> <a href="mailto:akshitvinay4636@gmail.com">akshitvinay4636@gmail.com</a>
 </p>
 
 <p align="center">
