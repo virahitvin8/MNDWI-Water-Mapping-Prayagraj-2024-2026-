@@ -1,88 +1,79 @@
-# LinkedIn Posts — Project 001A: MNDWI Water Mapping, Prayagraj (2024–2026)
+# LinkedIn Post Drafts — Project 001A: MNDWI Water Mapping, Prayagraj
 
-*Here are three variations of the LinkedIn post, tailored for different audiences. They include high-visibility hashtags and a structured layout.*
+*These drafts are heavily focused on the visual impact of your images and your detailed QGIS workflow. Choose the one that best fits your style.*
 
 ---
 
-## 🌟 Option 1: The "Visual Impact" Post (Best for General & GIS Audiences)
+## 🌟 Draft 1: The "Visual & QGIS Workflow" Post (High Visibility)
 *(Attach all 4 images: 3-Year Grid first, then 2024, 2025, 2026 individual panels)*
 
-I mapped the Sangam from space, three years running. Here's what changed. 🛰️💧
+I’ve spent the last few weeks mapping the Triveni Sangam from space. Here is the 3-year story of the Ganga-Yamuna confluence told through pixels and polygons. 🛰️💧
 
-📍 **Location:** Triveni Sangam, Prayagraj (25.4358°N, 81.8463°E)
-📅 **Timeframe:** 2024 – 2026 (Pre-monsoon vs. Post-monsoon)
-☁️ **Data Quality:** Strict <5% cloud filter on every scene
+📍 **Location:** Prayagraj (25.4358°N, 81.8463°E)
+📅 **Timeframe:** 2024 – 2026 (Pre vs. Post-monsoon)
 
-The results reveal a stark contrast in the river's behaviour:
+**The Pattern We Can't Ignore:**
+Over just three years, the summer dry-season baseline has plummeted by **90.7%** (from 9.37 sq km in 2024 to 0.87 sq km in 2026) within a 5km radius. Yet, as the baseline drops, the river's immediate monsoon recovery surge is becoming significantly sharper (+308% onset surge in 2026 alone).
 
-📉 **THE BASELINE DROP (Pre-Monsoon, May)**
-- 2024: 9.37 sq km
-- 2025: 3.08 sq km
-- 2026: 0.87 sq km
-*That’s a **90.7% drop** in pre-monsoon surface water in this 5km radius over three years.*
+🛠️ **The Geospatial Workflow:**
+I built the raw data in **Google Earth Engine** using a strict <5% cloud-filtered median composite of Sentinel-2 L2A imagery to extract the MNDWI index.
 
-🌊 **THE MONSOON RESPONSE (Onset/Peak)**
-- 2024 Peak: -0.82% change vs pre-monsoon
-- 2025 Peak: +170.65% recovery
-- 2026 Onset (Jun 1-24): +308.88% immediate surge
+But the real magic happened in **QGIS 3.34**. I built a master project file containing:
+- Clean raster-to-vector polygonizations for precise geometry.
+- 4-class temporal change maps (New Water, Lost Water, Permanent Water, Dry).
+- Granular area statistics using QGIS's vector geometry tools for absolute accuracy.
 
-**The Pattern:** The summer baseline keeps getting drier, but the monsoon response gets sharper. Each year, the river is recovering from a significantly lower starting point—and rebounding with greater intensity.
+The imagery speaks for itself. It’s a fascinating look at localized hydrological variance using open data. 
 
-*Caveat: This is a 5km-radius AOI over three monsoon cycles. It’s a real, measured, localized pattern, not a 30-year climate trend. Worth tracking further.*
+I've made the full methodology, GEE scripts, my QGIS Master Project (.qgz), and all raw GeoTIFFs/GeoPackages completely open-source.
 
-🛠️ **Methodology:** MNDWI on Sentinel-2 L2A (10m resolution) using Google Earth Engine & QGIS 3.34.
-📂 **Open Science:** Full GEE scripts, raw datasets, vectors, and methodology notes are fully open-source.
+🔗 **GitHub (Data, Code, & QGIS Project):** https://github.com/virahitvin8/MNDWI-Water-Mapping-Prayagraj-2024-2026-
 
-🔗 **Explore the Data & Code:** https://github.com/virahitvin8/MNDWI-Water-Mapping-Prayagraj-2024-2026-
+*This is Project 001A in the MISSION400 series. More to come.*
 
-*This is Project 001A in an ongoing series applying free satellite data to Indian water bodies and agricultural land.*
-
-#GeoAI #RemoteSensing #GIS #EarthObservation #WaterResources #Sentinel2 #GoogleEarthEngine #QGIS #Prayagraj #ClimateTech #OpenData #MNDWI #SpaceTech #Sustainability
+#GeoAI #RemoteSensing #GIS #EarthObservation #WaterResources #Sentinel2 #GoogleEarthEngine #QGIS #SpatialAnalysis #Prayagraj #ClimateData #OpenData #MNDWI #SpaceTech
 
 ---
 
-## 🔬 Option 2: The "Technical Deep-Dive" Post (Best for Data Scientists & Remote Sensing Experts)
-*(Attach the 3-Year Grid image)*
+## 🔬 Draft 2: The "GIS Specialist" Post (Focused on the Technical GIS Aspect)
+*(Attach the 3-Year Grid image + maybe a screenshot of your QGIS environment if you have one)*
 
-How much does a river's baseline change in 3 years? Let's look at the data. 🌍🛰️
+Ever wonder how much a river's extent changes in 3 years? Let's process the data. 🌍🛰️
 
-For Project 001A, I analyzed the surface water extent at the Ganga-Yamuna confluence in Prayagraj (2024-2026) using Sentinel-2 L2A imagery. 
+For Project 001A, I analyzed the surface water extent at the Ganga-Yamuna confluence (2024-2026). Here is the complete open-source pipeline I used to track a massive 90.7% drop in the pre-monsoon baseline.
 
-Using a strict <5% cloud-filtered median composite, I applied the Modified Normalized Difference Water Index (MNDWI) to track the Pre vs. Post-monsoon cycles.
+1️⃣ **Cloud Pipeline (Google Earth Engine):**
+Pulled `COPERNICUS/S2_SR_HARMONIZED` (Sentinel-2 L2A). Applied a QA60 per-pixel cloud mask and a scene-level <5% filter. Generated median composites and ran the MNDWI index (B3, B11) to isolate surface water.
 
-📊 **Key Findings (5km-radius AOI):**
-1️⃣ **Depleting Baseline:** The pre-monsoon (May) water extent dropped from 9.37 km² in 2024 to just 0.87 km² in 2026. A massive 90.7% decline.
-2️⃣ **Intensified Recovery:** As the baseline drops, the monsoon surge is becoming sharper. The 2026 onset (June 1-24) alone saw a +308% surge compared to its dry baseline.
+2️⃣ **Local Pipeline (QGIS 3.34):**
+I exported the raw 10m GeoTIFFs into my local QGIS environment. The master project involved:
+- **Raster Conversion:** Polygonizing the MNDWI masks.
+- **Geoprocessing:** Filtering and extracting area geometry (EPSG:32644).
+- **Change Detection:** Layering the 2024/2025/2026 pre and post layers to visualize the exact geometry of water loss and recovery.
 
-⚙️ **The Tech Stack:**
-- **Source:** `COPERNICUS/S2_SR_HARMONIZED`
-- **Masking:** QA60 bit 10/11 cloud mask applied per-pixel
-- **Processing:** Google Earth Engine (GEE)
-- **Vectorization & Area Calc:** QGIS 3.34 (EPSG:32644)
+📊 **The Insight:** While the summer baseline is shrinking, the immediate monsoon recovery is acting like a whiplash—surging +308% during the 2026 onset compared to the dry base.
 
-While a 3-year window in a localized 5km AOI isn't enough to declare a macro-climate shift, it highlights a measurable, high-variance local hydrology pattern that warrants further monitoring alongside CWC gauge data.
+I've uploaded the entire repository to GitHub—including my `MNDWI_Prayagraj_Master.qgz` QGIS project, the raw TIFs, vector packages, and GEE scripts.
 
-All code (GEE scripts), raw rasters (.tif), and vectors (.gpkg) are open-source and ready for reproduction.
+🔗 **Explore the Repo:** https://github.com/virahitvin8/MNDWI-Water-Mapping-Prayagraj-2024-2026-
 
-🔗 **GitHub Repository:** https://github.com/virahitvin8/MNDWI-Water-Mapping-Prayagraj-2024-2026-
-
-#DataScience #RemoteSensing #GoogleEarthEngine #GeoSpatial #GIS #SatelliteImagery #Python #Sentinel2 #Copernicus #Hydrology #EarthObservation #QGIS #OpenSource 
+#DataScience #RemoteSensing #QGIS #GoogleEarthEngine #GeoSpatial #GIS #SatelliteImagery #Python #Sentinel2 #Copernicus #Hydrology #EarthObservation #OpenSource #SpatialData
 
 ---
 
-## 🌍 Option 3: The "Short & Punchy" Post (Best for Quick Engagement)
-*(Attach the 3-Year Grid image)*
+## 🌍 Draft 3: The "Short & Image-Heavy" Post (Maximum Visual Engagement)
+*(Attach all 4 images: 3-Year Grid first, then 2024, 2025, 2026 individual panels)*
 
-The Triveni Sangam in Prayagraj is changing. 🛰️📉
+A 90.7% drop in the pre-monsoon surface water baseline. A +308% immediate recovery surge. 🛰️📉
 
-Using Sentinel-2 satellite data and Google Earth Engine, I mapped the Ganga-Yamuna confluence over the last 3 years (2024-2026). 
+This is the Triveni Sangam in Prayagraj over the last 3 years (2024-2026), mapped using 10m-resolution Sentinel-2 satellite data.
 
-The pre-monsoon dry baseline has shrunk by **90.7%** (9.37 sq km down to 0.87 sq km) in this 5km radius. At the same time, the immediate monsoon recovery surge is getting significantly sharper.
+The pattern is stark: the summer dry baseline is getting lower, but the monsoon response is getting sharper. 
 
-It's a fascinating look at localized hydrological variance using 10m-resolution open space data. 
+I processed the imagery in Google Earth Engine and ran the precise vector geometry and change-detection mapping locally in QGIS 3.34.
 
-I've made the full methodology, GEE scripts, QGIS files, and raw data completely open-source. Reproduce the results yourself below! 👇
+All my work—from the GEE scripts down to the master QGIS `.qgz` project file and raw data—is now open-source on GitHub. Dive in and reproduce it yourself! 👇
 
-🔗 **GitHub (Data & Code):** https://github.com/virahitvin8/MNDWI-Water-Mapping-Prayagraj-2024-2026-
+🔗 **GitHub:** https://github.com/virahitvin8/MNDWI-Water-Mapping-Prayagraj-2024-2026-
 
-#SpaceTech #EarthObservation #GIS #RemoteSensing #Prayagraj #WaterManagement #GoogleEarthEngine #GeoSpatial #ClimateData #Sentinel2
+#SpaceTech #EarthObservation #GIS #QGIS #RemoteSensing #Prayagraj #WaterManagement #GoogleEarthEngine #GeoSpatial #ClimateData #Sentinel2
