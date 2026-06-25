@@ -1,25 +1,24 @@
-# Large raster files (store locally or in external storage)
-*.tif
-*.tiff
-*.img
-
-# QGIS project lock files
+# QGIS lock files only — NOT the project file
 *.qgz~
 *.qgs~
 *.lock
 
-# GeoPackage lock/WAL files (safe to regenerate)
+# GeoPackage WAL/SHM lock files (safe to exclude, auto-regenerated)
 *.gpkg-shm
 *.gpkg-wal
-
-# Python
-__pycache__/
-*.py[cod]
-.env
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# Zip archives
+# Python cache
+__pycache__/
+*.py[cod]
+.env
+
+# Zip archives (use releases instead)
 *.zip
+
+# NOTE: GeoTIFFs (.tif) and GeoPackages (.gpkg) ARE included in this repo.
+# Raw rasters from GEE are in GEE_DATA/ and Processed/ — these are the
+# source truth for all numbers in the stats CSV.
