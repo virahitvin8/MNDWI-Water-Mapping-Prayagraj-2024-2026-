@@ -1,0 +1,25 @@
+# Large raster files (store locally or in external storage)
+*.tif
+*.tiff
+*.img
+
+# QGIS project lock files
+*.qgz~
+*.qgs~
+*.lock
+
+# GeoPackage lock/WAL files (safe to regenerate)
+*.gpkg-shm
+*.gpkg-wal
+
+# Python
+__pycache__/
+*.py[cod]
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Zip archives
+*.zip

@@ -1,0 +1,7 @@
+year,period,start_date,end_date,water_area_km2,season,monsoon_type,cloud_filter,notes
+2024,pre,2024-05-01,2024-05-31,9.3708,Pre-Monsoon,SW,<5%,Dry baseline
+2024,post,2024-10-01,2024-10-31,9.2937,Post-Monsoon,SW,<5%,SW monsoon peak
+2025,pre,2025-05-01,2025-05-31,3.0834,Pre-Monsoon,SW,<5%,Dry baseline
+2025,post,2025-10-01,2025-10-31,8.3452,Post-Monsoon,SW,<5%,SW monsoon peak
+2026,pre,2026-05-01,2026-05-31,0.8725,Pre-Monsoon,SW,<5%,Dry baseline
+2026,onset,2026-06-01,2026-06-24,3.5675,Monsoon Onset,SW,<5%,Partial - June 24 cutoff
